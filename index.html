@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Boolzapp</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://www.boolean.careers/favicon-16x16.png"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <script
+      src="https://kit.fontawesome.com/83bd2dbeec.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+    <div
+      id="app"
+      class="h-100 d-flex align-items-center justify-content-center"
+    >
+      <main class="container rounded shadow bg-white">
+        <div class="row h-100">
+          <!-- CONTACTS SECTION -->
+          <section
+            id="sidebar"
+            class="col-4 p-0 h-100 bg-light-gray d-flex flex-column"
+          >
+            <!-- User section -->
+            <section
+              class="user-section flex-shrink-0 d-flex justify-content-between"
+            >
+              <div class="media">
+                <figure>
+                  <img
+                    class="clickable"
+                    src="img/avatar_io.jpg"
+                    alt="Davide Bortoloni"
+                  />
+                </figure>
+                <div class="h6 media-text">Davide Bortoloni</div>
+              </div>
+              <div
+                class="
+                  w-25
+                  text-muted
+                  d-flex
+                  justify-content-around
+                  align-items-center
+                "
+              >
+                <i class="fas fa-circle-notch clickable"></i>
+                <i class="fas fa-comment-alt clickable"></i>
+                <i class="fas fa-ellipsis-v clickable"></i>
+              </div>
+            </section>
+            <!-- Notifications -->
+            <section class="notifications flex-shrink-0">
+              <div class="media">
+                <div class="media-icon flex-shrink-0">
+                  <i class="fas fa-bell-slash"></i>
+                </div>
+                <div class="media-text">
+                  <div>Ricevi notifiche di nuovi messaggi</div>
+                  <div class="fs-6 clickable text-decoration-underline">
+                    <small>Attiva le notifiche desktop</small>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- Search section -->
+            <section class="search p-2">
+              <i class="fas fa-search text-muted"></i>
+              <input
+                type="text"
+                class="w-100"
+                placeholder="Cerca o inizia una nuova chat..."
+              />
+            </section>
+            <!-- Users list -->
+            <section class="flex-grow-1 overflow-auto bg-white">
+              <ul class="m-0 p-0">
+                <li class="media">
+                  <figure>
+                    <img src="img/avatar_2.jpg" alt="Marco Lanci" />
+                  </figure>
+                  <div class="h6 media-text">
+                    <div>Marco Lanci</div>
+                  </div>
+                </li>
+              </ul>
+            </section>
+          </section>
+          <!-- CHAT SECTION -->
+          <section
+            id="chat"
+            class="col-8 rounded-end d-flex flex-column p-0 h-100 bg-chat-color"
+          >
+            <!-- Chat Contact  -->
+            <header
+              class="bg-light-gray flex-shrink-0 d-flex justify-content-between"
+            >
+              <div class="media">
+                <figure>
+                  <img
+                    class="clickable"
+                    src="img/avatar_2.jpg"
+                    alt="Marco Lanci"
+                  />
+                </figure>
+                <div class="h6 media-text">
+                  <div>Marco Lanci</div>
+                  <div class="media-secondary-text fw-light">
+                    <small>Ultimo accesso oggi alle</small>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="
+                  me-3
+                  d-flex
+                  text-muted
+                  align-items-center
+                  justify-content-around
+                "
+              >
+                <i class="fas fa-search ms-3 clickable"></i>
+                <i class="fas fa-paperclip ms-3 clickable"></i>
+                <i class="fas fa-ellipsis-v ms-3 clickable"></i>
+              </div>
+            </header>
+            <!-- Chat messages -->
+            <div class="flex-grow-1 overflow-auto bg-chat-image">
+              <ul>
+                <li class="message-container p-3 sent">
+                  <div class="message p-2 rounded-3">
+                    <p>Hai portato a spasso il cane?</p>
+                    <time datetime="2021-08-03T09:53">10/01/2020 - 09:53</time>
+                  </div>
+                </li>
+                <li class="message-container p-3 received">
+                  <div class="message p-2 rounded-3">
+                    <p>Sì!</p>
+                    <time datetime="2021-08-03T10:07">10/01/2020 - 10:07</time>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <!-- Chat message typing -->
+            <footer class="flex-shrink-0 container-fluid">
+              <div class="row h-100 align-items-center">
+                <div class="col-1">
+                  <i class="far fa-smile fa-2x text-muted clickable"></i>
+                </div>
+                <div class="col-10">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Scrivi un messaggio"
+                  />
+                </div>
+                <div class="col-1">
+                  <i class="fas fa-microphone fa-2x text-muted clickable"></i>
+                </div>
+              </div>
+            </footer>
+          </section>
+        </div>
+      </main>
+    </div>
+    <script src="js/script.js"></script>
+  </body>
+</html>
