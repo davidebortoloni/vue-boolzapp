@@ -86,6 +86,8 @@
                 type="text"
                 class="w-100"
                 placeholder="Cerca o inizia una nuova chat..."
+                v-model.trim="contactSought"
+                @keyup="filterContact()"
               />
             </section>
             <!-- Users list -->
@@ -93,6 +95,7 @@
               <ul class="m-0 p-0">
                 <li
                   v-for="(contact, index) in contacts"
+                  v-if="contact.visible===true"
                   :key="`${contact.name}${contact.avatar}`"
                   class="media"
                   :class="index === currentChat ? 'active' : null"
@@ -150,7 +153,7 @@
               </div>
             </header>
             <!-- Chat messages -->
-            <div class="flex-grow-1 overflow-auto bg-chat-image">
+            <div id="messages" class="flex-grow-1 overflow-auto bg-chat-image">
               <ul>
                 <li
                   v-for="message in contacts[currentChat].messages"

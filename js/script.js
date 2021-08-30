@@ -94,6 +94,7 @@ const app = new Vue({
     ],
     currentChat: 0,
     newMessage: "",
+    contactSought: "",
   },
   methods: {
     setCurrentChat(index) {
@@ -107,6 +108,7 @@ const app = new Vue({
         status,
       });
       this.newMessage = "";
+      this.goToBottom("messages");
     },
     sendMessage() {
       if (this.newMessage) {
@@ -126,6 +128,31 @@ const app = new Vue({
       );
       const lastMessage = receivedMessages[receivedMessages.length - 1];
       return lastMessage.date;
+    },
+    goToBottom(id) {
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        element.scrollTop = element.scrollHeight;
+      }, 0);
+    },
+    filterContact() {
+      if (this.contactSought) {
+        this.contacts.forEach((contact) => {
+          if (
+            contact.name
+              .toLowerCase()
+              .includes(this.contactSought.toLowerCase())
+          ) {
+            contact.visible = true;
+          } else {
+            contact.visible = false;
+          }
+        });
+      } else {
+        this.contacts.forEach((contact) => {
+          contact.visible = true;
+        });
+      }
     },
   },
 });
