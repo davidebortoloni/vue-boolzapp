@@ -129,6 +129,11 @@ const app = new Vue({
       const lastMessage = receivedMessages[receivedMessages.length - 1];
       return lastMessage.date;
     },
+    getTimeLastMessage(index) {
+      const messages = this.contacts[index].messages;
+      const lastMessage = messages[messages.length - 1];
+      return lastMessage.date;
+    },
     goToBottom(id) {
       setTimeout(() => {
         const element = document.getElementById(id);
