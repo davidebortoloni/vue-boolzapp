@@ -159,11 +159,18 @@
             <div id="messages" class="flex-grow-1 overflow-auto bg-chat-image">
               <ul>
                 <li
-                  v-for="message in contacts[currentChat].messages"
+                  v-for="(message, index) in contacts[currentChat].messages"
                   class="message-container p-3"
                   :class="message.status"
                 >
                   <div class="message p-2 rounded-3">
+                    <div id="delete" class="text-end">
+                      <i
+                        v-if="message.status === 'sent'"
+                        class="fas fa-times text-muted clickable"
+                        @click="deleteMessage(index)"
+                      ></i>
+                    </div>
                     <p>{{ message.message }}</p>
                     <time datetime="2021-08-03T09:53">{{message.date}}</time>
                   </div>

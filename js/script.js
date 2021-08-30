@@ -107,12 +107,12 @@ const app = new Vue({
         message,
         status,
       });
-      this.newMessage = "";
       this.goToBottom("messages");
     },
     sendMessage() {
       if (this.newMessage) {
         this.addMessage(this.newMessage, "sent");
+        this.newMessage = "";
         this.autoReply();
       }
     },
@@ -158,6 +158,9 @@ const app = new Vue({
           contact.visible = true;
         });
       }
+    },
+    deleteMessage(index) {
+      this.contacts[this.currentChat].messages.splice(index, 1);
     },
   },
 });
