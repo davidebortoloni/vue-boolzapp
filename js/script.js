@@ -1,7 +1,5 @@
 Vue.config.devtools = true;
 
-dayjs.extend(dayjs_plugin_customParseFormat);
-
 const app = new Vue({
   el: "#app",
   data: {
@@ -102,22 +100,32 @@ const app = new Vue({
       this.currentChat = index;
       this.newMessage = "";
     },
+    addMessage(message, status) {
+      this.contacts[this.currentChat].messages.push({
+        date: dayjs().format("DD/MM/YYYY HH:mm:ss"),
+        message,
+        status,
+      });
+      this.newMessage = "";
+    },
     sendMessage() {
-      if (this.newMessage.trim() !== "") {
-        this.contacts[this.currentChat].messages.push({
-          date: dayjs().format("DD/MM/YYYY HH:mm:ss"),
-          message: this.newMessage,
-          status: "sent",
-        });
-        this.newMessage = "";
-        setTimeout(() => {
-          this.contacts[this.currentChat].messages.push({
-            date: dayjs().format("DD/MM/YYYY HH:mm:ss"),
-            message: "Ok",
-            status: "received",
-          });
-        }, 1000);
+      if (this.newMessage) {
+        this.addMessage(this.newMessage, "sent");
+        this.autoReply();
       }
+    },
+    autoReply() {
+      setTimeout(() => {
+        this.addMessage("Ok", "received");
+      }, 1000);
+    },
+    getLastSeen() {
+      const messages = this.contacts[this.currentChat].messages;
+      const receivedMessages = messages.filter(
+        (message) => message.status === "received"
+      );
+      const lastMessage = receivedMessages[receivedMessages.length - 1];
+      return lastMessage.date;
     },
   },
 });

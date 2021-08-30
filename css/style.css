@@ -12,7 +12,7 @@
 }
 
 .bg-chat-image {
-  background-image: url('../img/mine.jpg');
+  background-image: url("../img/mine.jpg");
 }
 
 .clickable {
@@ -58,7 +58,8 @@
   margin-bottom: 0;
 }
 
-li.media:hover {
+li.media:hover,
+li.media.active {
   cursor: pointer;
   background-color: #eaeaea;
 }
@@ -117,7 +118,7 @@ body {
 
 /* CHAT FOOTER */
 
-#chat footer [class^='col-'] {
+#chat footer [class^="col-"] {
   display: flex;
   justify-content: center;
 }

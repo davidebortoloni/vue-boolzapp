@@ -24,7 +24,6 @@
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.6/dayjs.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.6/plugin/customParseFormat.js"></script>
   </head>
   <body>
     <div
@@ -96,6 +95,7 @@
                   v-for="(contact, index) in contacts"
                   :key="`${contact.name}${contact.avatar}`"
                   class="media"
+                  :class="index === currentChat ? 'active' : null"
                   @click="setCurrentChat(index)"
                 >
                   <figure>
@@ -131,7 +131,7 @@
                 <div class="h6 media-text">
                   <div>{{ contacts[currentChat].name }}</div>
                   <div class="media-secondary-text fw-light">
-                    <small>Ultimo accesso oggi alle</small>
+                    <small>Ultimo accesso: {{ getLastSeen() }}</small>
                   </div>
                 </div>
               </div>
@@ -176,7 +176,7 @@
                     class="form-control"
                     placeholder="Scrivi un messaggio"
                     @keyup.enter="sendMessage()"
-                    v-model="newMessage"
+                    v-model.trim="newMessage"
                   />
                 </div>
                 <div class="col-1">
