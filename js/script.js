@@ -141,23 +141,11 @@ const app = new Vue({
       }, 0);
     },
     filterContact() {
-      if (this.contactSought) {
-        this.contacts.forEach((contact) => {
-          if (
-            contact.name
-              .toLowerCase()
-              .includes(this.contactSought.toLowerCase())
-          ) {
-            contact.visible = true;
-          } else {
-            contact.visible = false;
-          }
-        });
-      } else {
-        this.contacts.forEach((contact) => {
-          contact.visible = true;
-        });
-      }
+      this.contacts.forEach((contact) => {
+        contact.visible = contact.name
+          .toLowerCase()
+          .includes(this.contactSought.toLowerCase());
+      });
     },
     deleteMessage(index) {
       this.contacts[this.currentChat].messages.splice(index, 1);
